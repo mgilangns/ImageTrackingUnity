@@ -1,3 +1,4 @@
+<!-- begin -->
 <!-- Battery as Energy Storage V2.0 -->
 <html lang="en-us">
   <head>
@@ -46,22 +47,28 @@
 			document.getElementById("emptyBar").style.width = (100 * (1 - progress)) + "%";
 			if (progress == 1)
 			{
-				document.getElementById("loadingBlock").style.display = "none";
+				setTimeout(function(){ document.getElementById("loadingBlock").style.display = "none"; }, 3000);
 				
-				document.getElementById("fullScreenButton").style.display="block";
+				setTimeout(function(){ document.getElementById("fullScreenButton").style.display="block"; }, 3000);
+
+				myFunction();
 			}	
 		}
 		
 		var gameInstance = UnityLoader.instantiate("gameContainer", "Build/cbc23be4da25fd42988982aa59c4e302.json", {
 			onProgress: UnityProgress});
 		
+		function myFunction() 
+		{
+        gameInstance.SendMessage('Canvas BG', 'set_Time', 'http://192.168.1.10');
+		}
 		//window.addEventListener("beforeunload", function(e){
-		//	console.log("Calling OnClose from Browser!");
+			//console.log("Calling OnClose from Browser!");
 			//gameInstance.SendMessage("Pak Pos", "DeleteUserState");
 	 
-		//	var dialogText = "Would you like to continue unloading the page?";
-		//	e.returnValue = dialogText;
-		//	return dialogText;
+			//var dialogText = "Would you like to continue unloading the page?";
+			//e.returnValue = dialogText;
+			//return dialogText;
 		//});
     </script>
   </head>
